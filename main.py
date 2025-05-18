@@ -44,6 +44,7 @@ class OCRProcessor:
     def extract_text(image_path):
         try:
             image = cv2.imread(image_path)
+            image = image[30:, :]
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             return pytesseract.image_to_string(gray, lang="rus+eng").strip()
         except Exception as e:
